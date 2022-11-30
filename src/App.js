@@ -11,9 +11,9 @@ function App() {
       <Card>
         <ShipmentsTable />
       </Card>
-      <Card>
+      {/* <Card>
         <ShipmentsBetweenTwoDates />
-      </Card>
+      </Card> */}
     </div>
   );
 }

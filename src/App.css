@@ -5,6 +5,9 @@ body{
     justify-content: space-evenly;
     font-family: 'Roboto', sans-serif;
 }
+ul{
+    list-style: none;
+}
 .card{
     width: max-content;
     padding: 10px;
