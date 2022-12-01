@@ -1,6 +1,7 @@
 import Axios from "axios";
 import { useState, useEffect } from "react";
-import ShipmentList from "./ShipmentList.js";
+// import ShipmentList from "./ShipmentList.js";s
+import Table from "./Table.js";
 
 function ShipmentsTable() {
   const [isLoading, setIsLoading] = useState(true);
@@ -28,10 +29,19 @@ function ShipmentsTable() {
     return <p>Loading table data</p>;
   }
 
+  const columns = [
+    { heading: "Id" },
+    { heading: "Carrier" },
+    { heading: "Status" },
+    { heading: "Promised Date" },
+    { heading: "Delivery Date" },
+  ];
+
   return (
     <div>
       <h3>Shipments Table</h3>
-      <ShipmentList shipments={loadedData} />
+      {/* <ShipmentList shipments={loadedData} /> */}
+      <Table data={loadedData} columns={columns} />
     </div>
   );
 }
