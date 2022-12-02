@@ -1,5 +1,5 @@
 import ShipmentsTable from "./ShipmentsTable.js";
-// import ShipmentsBetweenTwoDates from "./ShipmentsBetweenTwoDates";
+import ShipmentsBetweenTwoDates from "./ShipmentsBetweenTwoDates";
 
 import "./App.css";
 
@@ -11,9 +11,9 @@ function App() {
       <Card>
         <ShipmentsTable />
       </Card>
-      {/* <Card>
+      <Card>
         <ShipmentsBetweenTwoDates />
-      </Card> */}
+      </Card>
     </div>
   );
 }
