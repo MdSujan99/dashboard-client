@@ -1,6 +1,12 @@
 function TableRow(props) {
-  console.log(Object.values(props));
-  return <p>{Object.values(props.row)}</p>;
+  console.log(props.data);
+  return (
+    <tr>
+      {props.data.map((row, index) => (
+        <td>{row}</td>
+      ))}
+    </tr>
+  );
 }
 
 export default TableRow;
