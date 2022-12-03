@@ -1,19 +1,14 @@
 import ShipmentsTable from "./ShipmentsTable.js";
-// import ShipmentsBetweenTwoDates from "./ShipmentsBetweenTwoDates";
+import ShipmentsBetweenTwoDates from "./ShipmentsBetweenTwoDates";
 
-import "./App.css";
-
-import Card from "./Card.js";
+// import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
-    <div className="App">
-      <Card>
-        <ShipmentsTable />
-      </Card>
-      {/* <Card>
-        <ShipmentsBetweenTwoDates />
-      </Card> */}
+    <div className="m-3">
+      <ShipmentsTable />
+      <ShipmentsBetweenTwoDates />
     </div>
   );
 }

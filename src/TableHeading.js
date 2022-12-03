@@ -1,5 +1,5 @@
 function TableHeading({ item }) {
-  return <th>{item.heading}</th>;
+  return <th>{item}</th>;
 }
 
 export default TableHeading;
