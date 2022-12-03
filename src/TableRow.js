@@ -1,11 +1,6 @@
-function TableRow({ tuple }) {
-  return (
-    <tr>
-      {tuple.map((item, index) => {
-        <td>item</td>;
-      })}
-    </tr>
-  );
+function TableRow(props) {
+  console.log(Object.values(props));
+  return <p>{Object.values(props.row)}</p>;
 }
 
 export default TableRow;
