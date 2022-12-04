@@ -24,12 +24,23 @@ function App() {
   const postApi = "http://localhost:8080/shipment/track/";
 
   // console.log("moment(): " + moment(new Date()).format("YYYY-MM-DD"));
+
+  const handleDateChange = () => {
+    setPromiseDate(dateInputRef.current.value);
+    setApiUri(getApi.substring(0, 52) + "" + promiseDate);
+  };
+
   const handleGet = (event) => {
     event.preventDefault();
     console.log("updating the UI");
+    console.log("dateInputRef.current.value: " + dateInputRef.current.value);
+    if (!dateInputRef.current.value) {
+      setPromiseDate(moment(new Date()).format("YYYY-MM-DD"));
+    } else {
+      setPromiseDate(dateInputRef.current.value);
 
-    setPromiseDate(dateInputRef.current.value);
-    console.log("promiseDate: " + promiseDate);
+      console.log("promiseDate: " + promiseDate);
+    }
     setApiUri(getApi.substring(0, 52) + "" + promiseDate);
   };
 
@@ -155,7 +166,7 @@ function App() {
 
   useEffect(() => {
     console.log("apiUri: " + apiUri);
-    console.log(apiUri.substring(0, 52) === getApi.substring(0, 52));
+    // console.log(apiUri.substring(0, 52) === getApi.substring(0, 52));
 
     setIsLoading(true);
     if (apiUri.substring(0, 52) === getApi.substring(0, 52)) {
@@ -205,7 +216,7 @@ function App() {
     }
 
     // get the json result of all record in table shipments
-  }, [apiUri, promiseDate]);
+  }, [apiUri]);
 
   if (isLoading) {
     return <h1>Loading Dashboard</h1>;
@@ -226,7 +237,12 @@ function App() {
               <form onSubmit={handleGet}>
                 <Form.Group className="m-2">
                   <Form.Label htmlFor="inputDate">Promise Date</Form.Label>
-                  <Form.Control id="inputDate" type="date" ref={dateInputRef} />
+                  <Form.Control
+                    id="inputDate"
+                    type="date"
+                    ref={dateInputRef}
+                    onChange={handleDateChange}
+                  />
                   <Button type="submit" variant="primary" className="m-2">
                     Get
                   </Button>
