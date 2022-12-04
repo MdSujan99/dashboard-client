@@ -20,6 +20,7 @@ function App() {
 
   var getApi =
     "http://localhost:8080/shipment/tracking?promiseDate=" + promiseDate;
+
   const postApi = "http://localhost:8080/shipment/track/";
 
   // console.log("moment(): " + moment(new Date()).format("YYYY-MM-DD"));
@@ -204,7 +205,7 @@ function App() {
     }
 
     // get the json result of all record in table shipments
-  }, [apiUri]);
+  }, [apiUri, promiseDate]);
 
   if (isLoading) {
     return <h1>Loading Dashboard</h1>;
@@ -217,7 +218,6 @@ function App() {
           <Col>
             <Card className="m-3">
               <PieChart data={loadedData} />
-              {/* <ShipmentsBetweenTwoDates trackResults={offlineResponse} /> */}
             </Card>
           </Col>
           <Col>

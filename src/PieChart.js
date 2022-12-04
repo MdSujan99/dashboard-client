@@ -6,9 +6,6 @@ import { Chart } from "react-google-charts";
 import moment from "moment";
 
 function PieChart(props) {
-  // const [startDate, setStartDate] = useState("");
-  // const [endtDate, setEndtDate] = useState("");
-
   console.log("data");
   console.log(props.data);
 
@@ -20,10 +17,7 @@ function PieChart(props) {
   props.data.forEach((result) => {
     const promiseDate = moment(result.promiseDate);
     const actualDate = moment(result.deliveredDate.substring(0, 10));
-    // console.log("promiseDate: " + promiseDate);
-    // console.log("actualDate: " + actualDate);
     const diff = actualDate.diff(promiseDate, "days");
-    // console.log("diff: " + diff);
     if (diff === 0) {
       ontime++;
     } else if (diff < 0) {
@@ -35,10 +29,10 @@ function PieChart(props) {
     }
   });
 
-  console.log("ontime: " + ontime);
-  console.log("late: " + late);
-  console.log("early: " + early);
-  console.log("unknown: " + unknown);
+  // console.log("ontime: " + ontime);
+  // console.log("late: " + late);
+  // console.log("early: " + early);
+  // console.log("unknown: " + unknown);
 
   const data = [
     ["Shipments", "Delivery"],
@@ -54,13 +48,6 @@ function PieChart(props) {
   };
 
   return (
-    // <Form>
-    //   <Form.Label for>Start Date</Form.Label>
-    //   <Form.Control type="date" />
-    //   <Form.Label>End Date</Form.Label>
-    //   <Form.Control type="date" />
-    //   <Button>Get View</Button>
-    // </Form>
     <Chart
       chartType="PieChart"
       data={data}
