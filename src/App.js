@@ -116,48 +116,6 @@ function App() {
   const batchRequest = {
     mainRequest: [
       {
-        orderId: 1001001,
-        shipmentId: "1001001",
-        tenant: "nextuple",
-        orderDateTime: "2022-10-31T07:00:00",
-        promiseDate: "2022-12-04",
-        shipDateTime: "2022-11-05T00:00:00",
-        packageWeight: "1.1 lbs",
-        deliveryAddressZipCode: "273008",
-        carrier: "",
-        trackingNumber: "149331877648230",
-        shipmentStatus: "",
-        deliveredDate: "",
-      },
-      {
-        orderId: 1001002,
-        shipmentId: "1001002",
-        tenant: "nextuple",
-        orderDateTime: "2022-10-31T07:00:00",
-        promiseDate: "2022-12-04",
-        shipDateTime: "2022-11-05T00:00:00",
-        packageWeight: "1.0 lbs",
-        deliveryAddressZipCode: "273008",
-        carrier: "dhl",
-        trackingNumber: "1234567890",
-        shipmentStatus: "",
-        deliveredDate: "",
-      },
-      {
-        orderId: 1001003,
-        shipmentId: "1001003",
-        tenant: "nextuple",
-        orderDateTime: "2022-10-31T07:00:00",
-        promiseDate: "2022-12-05",
-        shipDateTime: "2022-11-05T00:00:00",
-        packageWeight: "1.0 lbs",
-        deliveryAddressZipCode: "273008",
-        carrier: "dhl",
-        trackingNumber: "123456789",
-        shipmentStatus: "",
-        deliveredDate: "",
-      },
-      {
         orderId: 1001004,
         shipmentId: "1001004",
         tenant: "nextuple",
@@ -185,26 +143,12 @@ function App() {
         shipmentStatus: "",
         deliveredDate: "",
       },
-      {
-        orderId: 1001006,
-        shipmentId: "1001006",
-        tenant: "nextuple",
-        orderDateTime: "2022-10-31T07:00:00",
-        promiseDate: "2022-12-04",
-        shipDateTime: "2022-11-05T00:00:00",
-        packageWeight: "1.0 lbs",
-        deliveryAddressZipCode: "273008",
-        carrier: "dhl",
-        trackingNumber: "123456781",
-        shipmentStatus: "",
-        deliveredDate: "",
-      },
     ],
   };
 
   useEffect(() => {
     setIsLoading(true);
-    if (apiUri == getApi) {
+    if (apiUri === getApi) {
       // perform get call
       console.log("perfomring date filter");
       Axios.get(apiUri)
@@ -225,7 +169,7 @@ function App() {
           console.log("api error: using offlineResponse");
           setLoadedData(offlineResponse);
         });
-    } else if (apiUri == postApi) {
+    } else if (apiUri === postApi) {
       // perform post call
       console.log("perfomring track shipments");
       Axios.post(apiUri, batchRequest)
@@ -246,10 +190,12 @@ function App() {
           console.log("api error: using offlineResponse");
           setLoadedData(offlineResponse);
         });
+    } else {
+      console.log("something wrong with apiUri: " + apiUri);
     }
 
     // get the json result of all record in table shipments
-  }, []);
+  }, [apiUri]);
 
   if (isLoading) {
     return <h1>Loading Dashboard</h1>;
