@@ -6,29 +6,30 @@ import ShipmentsTable from "./ShipmentsTable/ShipmentsTable";
 import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
 
 import "bootstrap/dist/css/bootstrap.min.css";
+import moment from "moment";
 
 function App() {
   const [apiUri, setApiUri] = useState("http://localhost:8080/shipment/track/");
-  const [promiseDate, setPromiseDate] = useState("2022-12-04");
+  const [promiseDate, setPromiseDate] = useState(
+    moment(new Date()).format("YYYY-MM-DD")
+  );
   const [isLoading, setIsLoading] = useState(true);
   const [loadedData, setLoadedData] = useState([]);
 
   const dateInputRef = useRef();
 
-  const getApi =
+  var getApi =
     "http://localhost:8080/shipment/tracking?promiseDate=" + promiseDate;
   const postApi = "http://localhost:8080/shipment/track/";
 
+  // console.log("moment(): " + moment(new Date()).format("YYYY-MM-DD"));
   const handleGet = (event) => {
     event.preventDefault();
+    console.log("updating the UI");
 
-    console.log("updating the uri");
-
-    const promiseDate = dateInputRef.current.value;
+    setPromiseDate(dateInputRef.current.value);
     console.log("promiseDate: " + promiseDate);
-
-    setApiUri(getApi + "" + dateInputRef.current.value);
-    // uri = "http://localhost:8080/shipment/tracking?promiseDate=2022-12-04"
+    setApiUri(getApi.substring(0, 52) + "" + promiseDate);
   };
 
   const offlineResponse = [
@@ -152,8 +153,11 @@ function App() {
   };
 
   useEffect(() => {
+    console.log("apiUri: " + apiUri);
+    console.log(apiUri.substring(0, 52) === getApi.substring(0, 52));
+
     setIsLoading(true);
-    if (apiUri === getApi) {
+    if (apiUri.substring(0, 52) === getApi.substring(0, 52)) {
       // perform get call
       console.log("perfomring date filter");
       Axios.get(apiUri)
