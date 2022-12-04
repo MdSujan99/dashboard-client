@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 import { Chart } from "react-google-charts";
 import moment from "moment";
 
-function ShipmentsBetweenTwoDates(props) {
+function PieChart(props) {
   // const [startDate, setStartDate] = useState("");
   // const [endtDate, setEndtDate] = useState("");
 
@@ -71,4 +71,4 @@ function ShipmentsBetweenTwoDates(props) {
   );
 }
 
-export default ShipmentsBetweenTwoDates;
+export default PieChart;

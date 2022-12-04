@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import Axios from "axios";
 
-import ShipmentsBetweenTwoDates from "./ShipmentsBetweenTwoDates";
+import PieChart from "./PieChart";
 // import MostReliableCarrier from "./MostReliableCarrier";
-import ShipmentsTable from "./ShipmentsTable";
+import ShipmentsTable from "./ShipmentsTable/ShipmentsTable";
 import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
 
 // import "./App.css";
@@ -207,7 +207,7 @@ function App() {
         <Row>
           <Col>
             <Card className="m-3">
-              <ShipmentsBetweenTwoDates data={loadedData} />
+              <PieChart data={loadedData} />
               {/* <ShipmentsBetweenTwoDates trackResults={offlineResponse} /> */}
             </Card>
           </Col>
