@@ -1,5 +1,5 @@
 function TableRow(props) {
-  console.log(props.data);
+  // console.log(props.data);
   return (
     <tr>
       {props.data.map((row, index) => (

@@ -1,7 +1,7 @@
 import TableRow from "./TableRow";
 
 function TableBody(props) {
-  console.log(props.rows);
+  // console.log(props.rows);
   return (
     <div>
       {props.rows.map((item, index) => (

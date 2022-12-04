@@ -9,21 +9,21 @@ function ShipmentsBetweenTwoDates(props) {
   // const [startDate, setStartDate] = useState("");
   // const [endtDate, setEndtDate] = useState("");
 
-  console.log("trackResults");
-  console.log(props.trackResults);
+  console.log("data");
+  console.log(props.data);
 
   var ontime = 0;
   var early = 0;
   var late = 0;
   var unknown = 0;
 
-  props.trackResults.forEach((result) => {
+  props.data.forEach((result) => {
     const promiseDate = moment(result.promiseDate);
     const actualDate = moment(result.deliveredDate.substring(0, 10));
-    console.log("promiseDate: " + promiseDate);
-    console.log("actualDate: " + actualDate);
+    // console.log("promiseDate: " + promiseDate);
+    // console.log("actualDate: " + actualDate);
     const diff = actualDate.diff(promiseDate, "days");
-    console.log("diff: " + diff);
+    // console.log("diff: " + diff);
     if (diff === 0) {
       ontime++;
     } else if (diff < 0) {

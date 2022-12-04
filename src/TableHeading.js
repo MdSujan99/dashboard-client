@@ -1,5 +1,5 @@
 function TableHeading(props) {
-  console.log(props.columns);
+  // console.log(props.columns);
   return (
     <div>
       {props.columns.map((item, index) => (
